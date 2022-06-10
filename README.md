@@ -1,3 +1,7 @@
+
+I used mostly programmatic UIs in this project, however I did use storyboards for the chat view cells.
+
+************
 Hello!
 
 Your task is to use the provided project to create the iOS app displayed in the provided PDF.
@@ -11,3 +15,4 @@ Bonus Points:
 - Show us you can add Cocoapods to this project. We will allow the use of one single pod.
 
 Good luck!
+*************
