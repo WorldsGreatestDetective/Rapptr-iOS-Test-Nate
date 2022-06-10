@@ -24,9 +24,11 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if let errorType = chatViewModel.setChatData(withMessages: messages) {
                 presentErrorAlert(ofType: errorType)
             } else {
-                chatViewModel.setMessageCount(count: messages.count)
-                configureTable()
-                tableView!.reloadData()
+                DispatchQueue.main.async {
+                    chatViewModel.setMessageCount(count: messages.count)
+                    configureTable()
+                    tableView?.reloadData()
+                }
             }
         }
     }
@@ -55,22 +57,20 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     private func configureTable() {
         self.tableView = UITableView(frame: self.view.frame)
-        
-        // tableView is force unwrapped when this method is called within scope since it is set above
-        
-        view.addSubview(tableView!)
-        tableView!.backgroundColor = view.backgroundColor
-        tableView!.register(UINib(nibName: "ChatTableViewCell", bundle: nil), forCellReuseIdentifier: "ChatTableViewCell")
-        tableView!.delegate = self
-        tableView!.dataSource = self
-        tableView!.separatorStyle = .none
-        tableView!.tableFooterView = UIView(frame: .zero)
+        guard let tableView = self.tableView else {return}
+
+        view.addSubview(tableView)
+        tableView.backgroundColor = view.backgroundColor
+        tableView.register(UINib(nibName: "ChatTableViewCell", bundle: nil), forCellReuseIdentifier: "ChatTableViewCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.tableFooterView = UIView(frame: .zero)
     }
     
     // MARK: - UITableViewDataSource
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let nibs = Bundle.main.loadNibNamed("ChatTableViewCell", owner: self, options: nil)
-        let cell: ChatTableViewCell? = nibs?[0] as? ChatTableViewCell
+        let cell = self.tableView?.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as? ChatTableViewCell
         
         guard let chatViewModel = chatViewModel else {return cell!}
         

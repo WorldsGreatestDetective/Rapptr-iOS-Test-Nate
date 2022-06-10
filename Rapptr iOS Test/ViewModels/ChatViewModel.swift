@@ -63,7 +63,7 @@ class ChatViewModel {
     func setChatData(withMessages messages: [Message]) -> ErrorTypeForChat? {
         setMessages(messages: messages)
         
-        for message in self.messages! { // .messages has been injected, so can safely !-unwrap
+        for message in self.messages! { 
             userids.append(message.userID!)
             usernames.append(message.username!)
             textBodies.append(message.text!)

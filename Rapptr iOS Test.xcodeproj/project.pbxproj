@@ -107,10 +107,11 @@
 			children = (
 				E9414DB626C45CF300512A71 /* AppDelegate.swift */,
 				E9414DE926C468D700512A71 /* SceneDelegate.swift */,
-				F5794B512839651E00FE484C /* Helpers */,
 				E9414DCC26C45ECD00512A71 /* Models */,
 				E9414DD226C4617B00512A71 /* Views */,
+				E9414DD826C4618900512A71 /* View Controllers */,
 				F55F562A2826BF1800171AA0 /* ViewModels */,
+				F5794B512839651E00FE484C /* Helpers */,
 				F55F562728218C9600171AA0 /* Protocols */,
 				E9414DBF26C45CF400512A71 /* Assets.xcassets */,
 				E9414DC126C45CF400512A71 /* LaunchScreen.storyboard */,
@@ -143,7 +144,6 @@
 				F55F56252821847800171AA0 /* MenuView.swift */,
 				F55F5621281EC75700171AA0 /* LoginView.swift */,
 				F55F562F2828277800171AA0 /* AnimationView.swift */,
-				E9414DD826C4618900512A71 /* View Controllers */,
 				E9414DD326C4617B00512A71 /* Cells */,
 			);
 			path = Views;
